@@ -1,0 +1,16 @@
+<h1><%= @event.title.titleize %>
+  <br><%= @event.date %><br>
+  <%= @event.location %></h1>
+<%= link_to 'RSVP', rsvp_event_path %>
+
+<% if @event.attendees.empty? %>
+<div class="list-group">
+  <li class="list-group-item text-muted">This event has no attendees yet</li>
+</div>
+<% else %>
+  <div class="list-group">
+    <% @event.attendees.each do |attendee| %>
+    <li> <%= attendee.email %> </li>
+    <% end %>
+  </div>
+<% end %>

@@ -1,4 +1,7 @@
-Events
-<%# <% events.each do |event| %>
-<%#  <%= event.title %>
-<%# <% end %> 
+<h2>Events</h2>
+<% @event.each do |event| %>
+  <br><%= link_to event.title.titleize, event_path(event) %><br>
+<% end %>
+
+
+<br><br><%= link_to 'New Event', new_event_path %>

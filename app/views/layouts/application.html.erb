@@ -13,7 +13,16 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+    <% if current_user %>
+      <%= current_user.email %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+      <%= link_to 'Home', root_path %>
+      <%= link_to 'Profile', user_path(current_user) %>
+    <% else %>
+      <%= link_to 'Register', new_user_registration_path %><br>
+      <%= link_to 'Log in', new_user_session_path %><br><br>
+    <% end %>
     <%= yield %>
   </body>
 </html>
+    
